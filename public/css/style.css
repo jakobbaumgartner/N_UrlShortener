@@ -1,0 +1,12 @@
+body {
+	background-color: rgba(153, 252, 41, 0.507);
+}
+
+.heightfull {
+	height: 100vh;
+}
+
+.container {
+	text-align: center;
+	margin-top: 30vh;
+}
