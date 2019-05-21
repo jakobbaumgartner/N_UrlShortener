@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,17 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<title>Document</title>
 </head>
+
 <body>
 
 	<div class="container heightfull">
 		<h1>Url Shortener</h1>
 
-		<form action="post/new" method="post">
-		
-		<input type="text" id="lurl">
-		<button type="submit">submit</button>
-		
+		<form action="post/new" method="POST">
+
+			<input type="text" name="lurl">
+			<input type="submit" value="submit">
+
 		</form>
 
 
@@ -26,4 +28,5 @@
 
 	<script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>

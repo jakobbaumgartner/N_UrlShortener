@@ -38,7 +38,8 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/post/new', control.check);
-// app.use('/', control.first);
+
+app.use('/',( control.first));
 
 
 

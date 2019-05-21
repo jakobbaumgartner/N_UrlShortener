@@ -10,15 +10,11 @@ module.exports.first = (req, res) => {
 
 module.exports.check = (req, res) => {
 
-	console.log('----->>> ')
+
+	console.log(req.body.lurl + '----->>> ')
 
 
 
-	///doesnt work
-
-
-
-
-	res.render('index', {layout: false, result: result});
+	 res.redirect('/');
 }
 
