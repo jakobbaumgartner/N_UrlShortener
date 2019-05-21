@@ -18,6 +18,11 @@ const url = sequelize.define('url', {
 	  type: Sequelize.STRING,
 	  allowNull: false
 	  // allowNull defaults to true
+	},
+	IPaddress: {
+	  type: Sequelize.STRING,
+	  allowNull: false
+	  // allowNull defaults to true
 	}
   }, {
 	// options
