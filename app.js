@@ -1,11 +1,14 @@
 const express = require('express');
-const dnsPromises = require('dns').promises;
+//const dnsPromises = require('dns').promises;
 const path = require('path')
 var bodyParser = require('body-parser')
 const control = require('./controllers/control')
 const Sequelize = require('sequelize');
 const mysql = require('mysql2')
 const {url, sequelize} = require('./models/storage')
+const dns = require('dns');
+const util = require('util')
+
 
 const app = express()
 // syncing database model
@@ -37,9 +40,11 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.post('/post/new', control.check);
+//app.post('/post/new', control.check);
 
-app.use('/',( control.first));
+app.use('/', control.test)
+
+//( control.first));
 
 
 
