@@ -9,7 +9,6 @@ var timeelement = new Date();
 var app = express()
 
 module.exports.test = async (req, res) => {
-	
 
 	var longurl = "FACEBOOK.COM"    // HARDCODED <------
 	console.log("First line ran.")
@@ -40,10 +39,13 @@ module.exports.test = async (req, res) => {
 	var result = await createnewaddress(longurl, result[3])
 
 	console.log("Last line ran.")
-
-	
-	
 }
+
+
+
+
+
+
 
 
 async function checkfulladdress(longurl) {

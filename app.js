@@ -1,4 +1,5 @@
 const express = require('express');
+//const dnsPromises = require('dns').promises;
 const path = require('path')
 var bodyParser = require('body-parser')
 const control = require('./controllers/control')
