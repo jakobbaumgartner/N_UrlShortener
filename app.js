@@ -12,42 +12,30 @@ const util = require('util')
 
 const app = express()
 // syncing database model
-url.sync().then(() => {
-
-  // return url
- 
-});
+url.sync()
   
 // css and js static folders 
 app.use(express.static(path.join(__dirname, 'public')))
 
-var expressHbs  = require('express-handlebars');
 
 // views engine settings
 
-app.engine(
-  'hbs',
-  expressHbs({
-  layoutsDir: 'views/layouts/',
-  defaultLayout: 'main-layout',
-	extname: 'hbs'
-  })
-);
+let ejs = require('ejs')
 
-app.set('view engine', 'hbs');
-app.set('views', 'views');
+app.set('view engine', 'ejs');
+//app.set('views', 'views');
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-//app.post('/post/new', control.check);
-
-app.use('/', control.test)
-
-//( control.first));
+app.post('/new', control.addresspoted);
 
 
+app.use('/',control.renderpage)
 
-app.listen(3000, () => {
+
+
+
+app.listen(5000, () => {
 	console.log(`Server started on port`);
 });

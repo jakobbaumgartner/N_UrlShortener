@@ -12,15 +12,24 @@
 
 <body>
 
-	<div class="container heightfull">
+	<div class="container ">
 		<h1>Url Shortener</h1>
 
-		<form action="post/new" method="POST">
+		<form action="/new" method="POST">
 
 			<input type="text" name="lurl">
 			<input type="submit" value="submit">
 
 		</form>
+
+		<table>
+			<% for(var i=0; i < list.length; i++) { %>
+			   <tr>
+				 <td><%= list[i].longurl %></td>
+				 <td><%= list[i].shorturl %></td>
+			   </tr>
+			<% } %>
+			</table>
 
 
 	</div>

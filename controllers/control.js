@@ -3,14 +3,46 @@ const { url, sequelize } = require('../models/storage')
 const dns = require('dns');
 const util = require('util')
 var asyncDNS = util.promisify(dns.lookup)
-var timeelement = new Date();
+
 
 
 var app = express()
 
-module.exports.test = async (req, res) => {
 
-	var longurl = "FACEBOOK.COM"    // HARDCODED <------
+
+
+module.exports.renderpage = (req, res) => {
+
+	url.findAll({raw: true}).then((list) => {
+		console.log(list)
+		res.render('index', {list: list});
+		console.log("renderpage")
+	}
+	)
+
+	
+
+
+}
+
+
+module.exports.addresspoted = (req, res) => {
+
+	test(req, res).then(() => {
+		res.redirect('/');
+		console.log("redirected")
+
+	}
+	)
+
+}
+
+
+
+async function test(req, res) {
+
+	
+	var longurl = req.body.lurl
 	console.log("First line ran.")
 	var result = await checkfulladdress(longurl)
 
@@ -29,21 +61,19 @@ module.exports.test = async (req, res) => {
 		return result
 	}
 
-	var result = await checkIPaddress(longurl, result[3])
+	// var result = await checkIPaddress(longurl, result[3])
 
-	if (result[0]) {
-		console.log(result)
-		return result
-	}
+	// if (result[0]) {
+	// 	console.log(result)
+	// 	return result
+	// }
 
 	var result = await createnewaddress(longurl, result[3])
 
 	console.log("Last line ran.")
+
+
 }
-
-
-
-
 
 
 
@@ -77,15 +107,15 @@ async function checkfulladdress(longurl) {
 
 
 async function checkDNS(longurl) {
-	
+
 	// checks if url exists using dns 
 
 	console.log("DNS check initiated.")
 	try {
 		var value = await asyncDNS(longurl)
-		
+
 	}
-	catch(err) {
+	catch (err) {
 		console.log("noDNS")
 		return [true, longurl, null, null, "noDNS"]
 	}
@@ -98,7 +128,7 @@ async function checkDNS(longurl) {
 
 
 
-async function checkIPaddress (longurl, ip) {
+async function checkIPaddress(longurl, ip) {
 
 	// checks if address ip is already in DB
 
@@ -127,21 +157,23 @@ async function checkIPaddress (longurl, ip) {
 
 
 
-async function createnewaddress (longurl, addressIP) {
+async function createnewaddress(longurl, addressIP) {
+	var timeelement = new Date();
 
 	// creates new address entery in the database
 
 	try {
 		var shorturl = timeelement.getTime()
-		var value =  url.create({longurl: longurl, shorturl: shorturl, IPaddress: addressIP} )
+		var value = url.create({ longurl: longurl, shorturl: shorturl, IPaddress: addressIP })
 
 	}
-	catch(err) {
-		throw new Error(err) 
-		
+	catch (err) {
+		throw new Error(err)
+
 	}
-	
+
 	console.log("New address added.")
-	return [false, longurl ,shorturl, addressIP, 'NEW_DB']
-		
+	return [false, longurl, shorturl, addressIP, 'NEW_DB']
+
 }
+
