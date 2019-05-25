@@ -26,7 +26,9 @@ const url = sequelize.define('url', {
 	}
   }, {
 	// options
-  });
+	});
+	
+	
 
 module.exports.sequelize = sequelize
 module.exports.url = url
