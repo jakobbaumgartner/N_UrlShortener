@@ -12,9 +12,9 @@ Program uporablja sintakso Async-Await.
 ## Uporabljeno
 
 * nodejs tehnologija
-** DNS modul
-** url-parse modul
-** util.promisify modul
+	* DNS modul
+	* url-parse modul
+	* util.promisify modul
 * EXPRESS framework
 * sequelize ORM
 * MySQL database
