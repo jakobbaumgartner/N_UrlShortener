@@ -24,4 +24,5 @@ Program uporablja sintakso Async-Await. Za funkcijo, ki uporablja callback() sem
 * sequelize ORM
 * MySQL database
 * EJS templating engine
+* Bootstrap framework
 
