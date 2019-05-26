@@ -119,6 +119,8 @@ async function checkDNS(longurl) {
 	// checks if url exists using dns 
 
 	const myURL = new URL('http://'+longurl)
+	// creates URL element, to be used with URL parser, because 
+	// DNS checker wants just a hostname
 
 	console.log("DNS check initiated.")
 	try {

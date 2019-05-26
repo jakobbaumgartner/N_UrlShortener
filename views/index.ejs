@@ -26,10 +26,12 @@
 		</form>
 
 		<table>
-			<% for(var i=0; i < list.length; i++) { %>
+			<th>LongURL</th>
+			<th>ShortURL</th>
+			<% for(var i=list.length-1; i >= 0; i--) { %>
 			   <tr>
 				 <td><a href="http://<%- list[i].longurl %> "><%= list[i].longurl %></a></td>
-				 <td><%= list[i].shorturl %></td>
+				 <td><a href="nl/<%- list[i].shorturl %>">localhost:5000/nl/<%= list[i].shorturl %></a></td>
 			   </tr>
 			<% } %>
 			</table>
