@@ -1,6 +1,8 @@
 const express = require('express');
 const { url, sequelize } = require('../models/storage')
+const {redirector} = require('./redirect')
 const dns = require('dns');
+var urlParse = require('url-parse');
 const util = require('util')
 var asyncDNS = util.promisify(dns.lookup)
 
@@ -8,13 +10,19 @@ var asyncDNS = util.promisify(dns.lookup)
 
 var app = express()
 
+module.exports.redirect = (req, res) => {
 
+	redirector(req, res)
+
+
+
+}
 
 
 module.exports.renderpage = (req, res) => {
 
 	url.findAll({raw: true}).then((list) => {
-		console.log(list)
+		//console.log(list)
 		res.render('index', {list: list});
 		console.log("renderpage")
 	}
@@ -42,7 +50,7 @@ module.exports.addresspoted = (req, res) => {
 async function test(req, res) {
 
 	
-	var longurl = req.body.lurl
+	var longurl = (req.body.lurl).toLowerCase();
 	console.log("First line ran.")
 	var result = await checkfulladdress(longurl)
 
@@ -110,9 +118,11 @@ async function checkDNS(longurl) {
 
 	// checks if url exists using dns 
 
+	const myURL = new URL('http://'+longurl)
+
 	console.log("DNS check initiated.")
 	try {
-		var value = await asyncDNS(longurl)
+		var value = await asyncDNS(myURL.hostname)
 
 	}
 	catch (err) {

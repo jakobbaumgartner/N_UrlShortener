@@ -7,6 +7,8 @@ const Sequelize = require('sequelize');
 const mysql = require('mysql2')
 const {url, sequelize} = require('./models/storage')
 const dns = require('dns');
+var urlParse = require('url-parse');
+
 const util = require('util')
 
 
@@ -29,6 +31,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/new', control.addresspoted);
+
+app.use('/nl', control.redirect)
 
 
 app.use('/',control.renderpage)

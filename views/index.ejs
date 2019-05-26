@@ -20,12 +20,15 @@
 			<input type="text" name="lurl">
 			<input type="submit" value="submit">
 
+			<br><br>
+			<p>Prosim vnesite naslov v obliki: "www.google.com/..." ali "google.com".</p>
+
 		</form>
 
 		<table>
 			<% for(var i=0; i < list.length; i++) { %>
 			   <tr>
-				 <td><%= list[i].longurl %></td>
+				 <td><a href="http://<%- list[i].longurl %> "><%= list[i].longurl %></a></td>
 				 <td><%= list[i].shorturl %></td>
 			   </tr>
 			<% } %>
